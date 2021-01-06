@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Perpustakaan.Models.Peminjaman>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Peminjaman</h2>
+
+<p>
+    <a asp-action="Create">Tambah Data</a>
+</p>
+@using (Html.BeginForm("Index", "Peminjamen", FormMethod.Get))
+{
+    <p>
+        Nama Peminjam: @Html.DropDownList("ktsd", "Nama Peminjam")
+        Cari Data : @Html.TextBox("searchString")
+        <input type="submit" value="Filter" />
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TglPeminjaman)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoAnggotaNavigation.Nama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoBukuNavigation.JudulBuku)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TglPeminjaman)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoAnggotaNavigation.Nama)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoBukuNavigation.JudulBuku)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.NoPeminjaman">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.NoPeminjaman">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.NoPeminjaman">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

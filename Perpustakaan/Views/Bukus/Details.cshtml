@@ -1,0 +1,48 @@
+﻿@model Perpustakaan.Models.Buku
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Buku</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JudulBuku)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JudulBuku)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pengarang)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pengarang)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Penerbit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Penerbit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NoKatalogNavigation.JenisKatalog)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NoKatalogNavigation.JenisKatalog)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NoRakNavigation.NamaRak)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NoRakNavigation.NamaRak)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.NoBuku">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

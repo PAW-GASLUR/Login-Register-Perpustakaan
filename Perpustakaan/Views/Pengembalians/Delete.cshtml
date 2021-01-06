@@ -1,0 +1,45 @@
+﻿@model Perpustakaan.Models.Pengembalian
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Pengembalian</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TglPengembalian)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TglPengembalian)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Denda)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Denda)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NoKondisiNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NoKondisiNavigation.NoKondisi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NoPeminjamanNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NoPeminjamanNavigation.NoPeminjaman)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="NoPengembalian" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

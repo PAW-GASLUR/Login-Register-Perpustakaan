@@ -1,0 +1,44 @@
+﻿@model Perpustakaan.Models.Peminjaman
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Peminjaman</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="NoPeminjaman" />
+            <div class="form-group">
+                <label asp-for="TglPeminjaman" class="control-label"></label>
+                <input asp-for="TglPeminjaman" class="form-control" />
+                <span asp-validation-for="TglPeminjaman" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoBuku" class="control-label"></label>
+                <select asp-for="NoBuku" class="form-control" asp-items="ViewBag.NoBuku"></select>
+                <span asp-validation-for="NoBuku" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoAnggota" class="control-label"></label>
+                <select asp-for="NoAnggota" class="form-control" asp-items="ViewBag.NoAnggota"></select>
+                <span asp-validation-for="NoAnggota" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

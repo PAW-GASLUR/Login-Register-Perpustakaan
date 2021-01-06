@@ -1,0 +1,51 @@
+﻿@model Perpustakaan.Models.Buku
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Buku</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JudulBuku)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JudulBuku)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pengarang)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pengarang)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Penerbit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Penerbit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NoKatalogNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NoKatalogNavigation.NoKatalog)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NoRakNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NoRakNavigation.NoRak)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="NoBuku" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

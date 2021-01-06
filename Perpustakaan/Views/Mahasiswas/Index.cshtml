@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Perpustakaan.Models.Mahasiswa>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Mahasiswa</h2>
+
+<p>
+    <a asp-action="Create">Tambah Data</a>
+</p>
+@using (Html.BeginForm("Index", "Mahasiswas", FormMethod.Get))
+{
+    <p>
+        Nama Mahasiswa: @Html.DropDownList("ktsd", "Nama Mahasiswa")
+        Cari Data : @Html.TextBox("searchString")
+        <input type="submit" value="Filter" />
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoHp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Alamat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoGenderNavigation.NamaGender)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nim)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nama)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NoHp)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Alamat)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NoGenderNavigation.NamaGender)
+    </td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@item.NoAnggota">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.NoAnggota">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.NoAnggota">Delete</a>
+    </td>
+</tr>
+}
+    </tbody>
+</table>

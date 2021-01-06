@@ -1,0 +1,48 @@
+﻿@model Perpustakaan.Models.Mahasiswa
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Mahasiswa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nim)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nim)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nama)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nama)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NoHp)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NoHp)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Alamat)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Alamat)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NoGenderNavigation.NamaGender)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NoGenderNavigation.NamaGender)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.NoAnggota">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
