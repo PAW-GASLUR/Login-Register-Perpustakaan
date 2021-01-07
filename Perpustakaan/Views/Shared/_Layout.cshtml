@@ -33,19 +33,41 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Daftar Rental<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a asp-area="" asp-controller="Bukus" asp-action="Index">Buku</a></li>
-                            <li><a asp-area="" asp-controller="Genders" asp-action="Index">Gender</a></li>
-                            <li><a asp-area="" asp-controller="KondisiBukus" asp-action="Index">KondisiBuku</a></li>
-                            <li><a asp-area="" asp-controller="Mahasiswas" asp-action="Index">Mahasiswa</a></li>
-                            <li><a asp-area="" asp-controller="Peminjamen" asp-action="Index">Peminjamen</a></li>
-                            <li><a asp-area="" asp-controller="Pengembalians" asp-action="Index">Pengembalian</a></li>
-                            <li><a asp-area="" asp-controller="Raks" asp-action="Index">Rak</a></li>
-                            <li><a asp-area="" asp-controller="KatalogBukus" asp-action="Index">Katalog Buku</a></li>
-                        </ul>
-                    </li>
+                    @if (User.IsInRole("Staff"))
+                    {
+                        <li><a asp-area="" asp-controller="Role" asp-action="Index">Role</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Daftar Perpustakaan<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-area="" asp-controller="Bukus" asp-action="Index">Buku</a></li>
+                                <li><a asp-area="" asp-controller="Genders" asp-action="Index">Gender</a></li>
+                                <li><a asp-area="" asp-controller="KondisiBukus" asp-action="Index">KondisiBuku</a></li>
+                                <li><a asp-area="" asp-controller="Mahasiswas" asp-action="Index">Mahasiswa</a></li>
+                                <li><a asp-area="" asp-controller="Peminjamen" asp-action="Index">Peminjamen</a></li>
+                                <li><a asp-area="" asp-controller="Pengembalians" asp-action="Index">Pengembalian</a></li>
+                                <li><a asp-area="" asp-controller="Raks" asp-action="Index">Rak</a></li>
+                                <li><a asp-area="" asp-controller="KatalogBukus" asp-action="Index">Katalog Buku</a></li>
+                            </ul>
+                        </li>
+
+                    }
+                    else if (User.IsInRole("Mahasiswa"))
+                    {
+                        <li><a asp-area="" asp-controller="Role" asp-action="Index">Role</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Daftar Perpustakaan<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-area="" asp-controller="Bukus" asp-action="Index">Buku</a></li>
+                           
+                                <li><a asp-area="" asp-controller="Peminjamen" asp-action="Index">Peminjamen</a></li>
+                                <li><a asp-area="" asp-controller="Pengembalians" asp-action="Index">Pengembalian</a></li>
+                               
+                            </ul>
+                        </li>
+
+
+                    }
+
                 </ul>
                 <partial name="_LoginPartial" />
             </div>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ namespace Perpustakaan.Controllers
         }
 
         // GET: Peminjamen
+        [Authorize(Policy="readonlypolicy")]
         public async Task<IActionResult> Index(string ktsd, string searchString)
         {
             //buat list menyimpan ketersediaan
@@ -71,6 +73,7 @@ namespace Perpustakaan.Controllers
             return View(peminjaman);
         }
 
+        [Authorize(Policy = "writepolicy")]
         // GET: Peminjamen/Create
         public IActionResult Create()
         {
@@ -97,6 +100,7 @@ namespace Perpustakaan.Controllers
             return View(peminjaman);
         }
 
+        [Authorize(Policy = "editpolicy")]
         // GET: Peminjamen/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -152,6 +156,7 @@ namespace Perpustakaan.Controllers
             return View(peminjaman);
         }
 
+        [Authorize(Policy = "deletepolicy")]
         // GET: Peminjamen/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

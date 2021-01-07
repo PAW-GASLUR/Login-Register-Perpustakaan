@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +18,7 @@ namespace Perpustakaan.Controllers
         {
             _context = context;
         }
-
+        [Authorize(Policy="readonlypolicy")]
         // GET: Bukus
         public async Task<IActionResult> Index(string ktsd, string searchString)
         {
@@ -50,6 +51,7 @@ namespace Perpustakaan.Controllers
             return View(await menu.ToListAsync());
         }
 
+
         // GET: Bukus/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -69,7 +71,7 @@ namespace Perpustakaan.Controllers
 
             return View(buku);
         }
-
+        [Authorize(Policy = "writepolicy")]
         // GET: Bukus/Create
         public IActionResult Create()
         {
@@ -95,7 +97,7 @@ namespace Perpustakaan.Controllers
             ViewData["NoRak"] = new SelectList(_context.Rak, "NoRak", "NoRak", buku.NoRak);
             return View(buku);
         }
-
+        [Authorize(Policy = "editpolicy")]
         // GET: Bukus/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -150,7 +152,7 @@ namespace Perpustakaan.Controllers
             ViewData["NoRak"] = new SelectList(_context.Rak, "NoRak", "NamaRak", buku.NoRak);
             return View(buku);
         }
-
+        [Authorize(Policy = "deletepolicy")]
         // GET: Bukus/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

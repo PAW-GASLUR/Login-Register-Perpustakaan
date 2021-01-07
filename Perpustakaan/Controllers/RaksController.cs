@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +18,7 @@ namespace Perpustakaan.Controllers
         {
             _context = context;
         }
-
+        [Authorize(Policy = "readonlypolicy")]
         // GET: Raks
         public async Task<IActionResult> Index()
         {
@@ -41,7 +42,7 @@ namespace Perpustakaan.Controllers
 
             return View(rak);
         }
-
+        [Authorize(Policy = "writepolicy")]
         // GET: Raks/Create
         public IActionResult Create()
         {
@@ -63,7 +64,7 @@ namespace Perpustakaan.Controllers
             }
             return View(rak);
         }
-
+        [Authorize(Policy = "editpolicy")]
         // GET: Raks/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -114,7 +115,7 @@ namespace Perpustakaan.Controllers
             }
             return View(rak);
         }
-
+        [Authorize(Policy = "deletepolicy")]
         // GET: Raks/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

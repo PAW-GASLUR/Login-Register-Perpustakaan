@@ -36,12 +36,23 @@ namespace Perpustakaan
             });
 
             services.AddDbContext<Models.PERPUSTAKAAN_PAWContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             //services.AddDefaultIdentity<IdentityUser>()
             //.AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
             services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultUI()
             .AddEntityFrameworkStores<PERPUSTAKAAN_PAWContext>().AddDefaultTokenProviders();
+
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("readonlypolicy", builder => builder.RequireRole("Staff", "Mahasiswa"));
+                options.AddPolicy("writepolicy", builder => builder.RequireRole("Staff" ));
+                options.AddPolicy("editpolicy", builder => builder.RequireRole("Staff"));
+                options.AddPolicy("deletepolicy", builder => builder.RequireRole("Staff"));
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

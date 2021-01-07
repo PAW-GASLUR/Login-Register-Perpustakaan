@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +18,7 @@ namespace Perpustakaan.Controllers
         {
             _context = context;
         }
-
+        [Authorize(Policy = "readonlypolicy")]
         // GET: Mahasiswas
         public async Task<IActionResult> Index(string ktsd, string searchString)
         {
@@ -69,7 +70,7 @@ namespace Perpustakaan.Controllers
 
             return View(mahasiswa);
         }
-
+        [Authorize(Policy = "writepolicy")]
         // GET: Mahasiswas/Create
         public IActionResult Create()
         {
@@ -93,7 +94,7 @@ namespace Perpustakaan.Controllers
             ViewData["NoGender"] = new SelectList(_context.Gender, "NoGender", "NamaGender", mahasiswa.NoGender);
             return View(mahasiswa);
         }
-
+        [Authorize(Policy = "editpolicy")]
         // GET: Mahasiswas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -146,7 +147,7 @@ namespace Perpustakaan.Controllers
             ViewData["NoGender"] = new SelectList(_context.Gender, "NoGender", "NamaGender", mahasiswa.NoGender);
             return View(mahasiswa);
         }
-
+        [Authorize(Policy = "deletepolicy")]
         // GET: Mahasiswas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
