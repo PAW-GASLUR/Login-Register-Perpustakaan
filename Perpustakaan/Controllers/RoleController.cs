@@ -15,14 +15,14 @@ namespace Perpustakaan.Controllers
         {
             this.roleManager = roleManager;
         }
-        [Authorize(Policy = "readonlypolicy")]
+      //  [Authorize(Policy = "readonlypolicy")]
         public IActionResult Index()
         {
             var roles = roleManager.Roles.ToList();
             return View(roles);
         }
 
-        [Authorize(Policy = "writepolicy")]
+      //  [Authorize(Policy = "writepolicy")]
         public IActionResult Create()
         {
             return View(new IdentityRole());
