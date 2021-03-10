@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Perpustakaan.Models
-{
+{ /// nama project
+
     public partial class Buku
     {
         public Buku()
