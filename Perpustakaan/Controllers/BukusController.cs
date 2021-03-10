@@ -21,6 +21,7 @@ namespace Perpustakaan.Controllers
         [Authorize(Policy="readonlypolicy")]
         // GET: Bukus
         // Arif Budiman Arrosyid
+        // Ahmad Arif Ramadhan
         public async Task<IActionResult> Index(string ktsd, string searchString)
         {
             //buat list menyimpan ketersediaan
