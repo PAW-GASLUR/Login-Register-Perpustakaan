@@ -7,6 +7,7 @@ namespace Perpustakaan.Models
 
     public partial class Buku
     {
+        /// main class
         public Buku()
         {
             Peminjaman = new HashSet<Peminjaman>();
