@@ -10,50 +10,60 @@ using Perpustakaan.Models;
 
 namespace Perpustakaan.Controllers
 {
+    /// <summary>
+    /// Main Class
+    /// </summary>
+    /// <remarks>
+    /// Class ini dapat melakukan CRUD pada Buku.
+    /// </remarks>
     public class BukusController : Controller
     {
+        /// <summary>
+        /// Class controller buku
+        /// </summary>
         private readonly PERPUSTAKAAN_PAWContext _context;
 
+        /// <summary>
+        /// Menentukan data perpustakaan dapat dibaca.
+        /// </summary>
+        /// <param name="context"></param>
         public BukusController(PERPUSTAKAAN_PAWContext context)
         {
             _context = context;
         }
         [Authorize(Policy="readonlypolicy")]
+        
+        /// <summary>
+        /// Function ntuk GET data buku
+        /// </summary>
+        /// <param name="ktsd">Parameter ketersediaan</param>
+        /// <param name="searchString">Parameter pencarian</param>
         // GET: Bukus
-        // Arif Budiman Arrosyid
-        // Ahmad Arif Ramadhan
         public async Task<IActionResult> Index(string ktsd, string searchString)
         {
-            //buat list menyimpan ketersediaan
             var ktsdList = new List<string>();
-            //Query mengambil data
             var ktsdQuery = from d in _context.Buku orderby d.JudulBuku select d.JudulBuku;
-
             ktsdList.AddRange(ktsdQuery.Distinct());
-
-            //untuk menampilkan di view
             ViewBag.ktsd = new SelectList(ktsdList);
-
-            //panggil db context
             var menu = from m in _context.Buku.Include(k => k.NoKatalogNavigation).Include(k => k.NoRakNavigation) select m;
-
-            //untuk memilih dropdownlist ketersediaan
             if (!string.IsNullOrEmpty(ktsd))
             {
                 menu = menu.Where(x => x.JudulBuku == ktsd);
             }
-
-            //untuk search data
             if (!string.IsNullOrEmpty(searchString))
             {
                 menu = menu.Where(s => s.JudulBuku.Contains(searchString) || s.Pengarang.Contains(searchString));
             }
-            //var pERPUSTAKAAN_PAWContext = _context.Buku.Include(b => b.NoKatalogNavigation).Include(b => b.NoRakNavigation);
-            //return View(await pERPUSTAKAAN_PAWContext.ToListAsync());
             return View(await menu.ToListAsync());
         }
 
 
+
+        /// <summary>
+        /// Function untuk GET detail buku
+        /// </summary>
+        /// <param name="id">Parameter id</param>
+        /// <returns></returns>
         // GET: Bukus/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -74,6 +84,10 @@ namespace Perpustakaan.Controllers
             return View(buku);
         }
         [Authorize(Policy = "writepolicy")]
+
+        /// <summary>
+        /// Function untuk GET buku yang akan dibuat
+        /// </summary>
         // GET: Bukus/Create
         public IActionResult Create()
         {
@@ -82,6 +96,11 @@ namespace Perpustakaan.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Function untuk POST buku yang akan dibuat
+        /// </summary>
+        /// <param name="buku">Parameter buku</param>
+        /// <returns></returns>
         // POST: Bukus/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -100,6 +119,10 @@ namespace Perpustakaan.Controllers
             return View(buku);
         }
         [Authorize(Policy = "editpolicy")]
+
+        /// <summary>
+        /// Function untuk GET buku yang akan diedit
+        /// </summary>
         // GET: Bukus/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -118,6 +141,12 @@ namespace Perpustakaan.Controllers
             return View(buku);
         }
 
+        /// <summary>
+        /// Function untuk POST buku yang akan diedit
+        /// </summary>
+        /// <param name="id">Parameter id</param>
+        /// <param name="buku">Parameter buku</param>
+        /// <returns></returns>
         // POST: Bukus/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -155,6 +184,10 @@ namespace Perpustakaan.Controllers
             return View(buku);
         }
         [Authorize(Policy = "deletepolicy")]
+
+        /// <summary>
+        /// Function untuk GET buku yang akan dihapus
+        /// </summary>
         // GET: Bukus/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -174,7 +207,11 @@ namespace Perpustakaan.Controllers
 
             return View(buku);
         }
-
+        /// <summary>
+        /// Function untuk POST buku yang akan dihapus
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // POST: Bukus/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

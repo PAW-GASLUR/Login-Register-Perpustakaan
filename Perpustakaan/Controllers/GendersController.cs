@@ -144,10 +144,10 @@ namespace Perpustakaan.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
         private bool GenderExists(int id)
         {
             return _context.Gender.Any(e => e.NoGender == id);
         }
+        
     }
 }
