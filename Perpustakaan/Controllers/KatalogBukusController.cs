@@ -10,22 +10,44 @@ using Perpustakaan.Models;
 
 namespace Perpustakaan.Controllers
 {
+    /// <summary>
+    /// Main Class
+    /// </summary>
+    /// <remarks>
+    /// Class ini dapat melakukan CRUD pada katalog buku
+    /// </remarks>
     public class KatalogBukusController : Controller
     {
+        /// <summary>
+        /// Class controller katalog buku
+        /// </summary>
         private readonly PERPUSTAKAAN_PAWContext _context;
+
+        /// <summary>
+        /// Menentukan data perpustakaan dapat dibaca
+        /// </summary>
+        /// <param name="context"></param>
 
         public KatalogBukusController(PERPUSTAKAAN_PAWContext context)
         {
             _context = context;
         }
         [Authorize(Policy = "readonlypolicy")]
-        // GET: KatalogBukus
+        /// <summary>
+        /// Function untuk get data katalog buku
+        /// </summary>
         public async Task<IActionResult> Index()
         {
             return View(await _context.KatalogBuku.ToListAsync());
         }
 
-        // GET: KatalogBukus/Details/5
+        /// <summary>
+        /// Function untuk GET detail katalog buku
+        /// </summary>
+        /// <param name="id">Parameter id</param>
+        /// <returns>
+        /// data detail katalog buku
+        /// </returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,7 +65,10 @@ namespace Perpustakaan.Controllers
             return View(katalogBuku);
         }
         [Authorize(Policy = "writepolicy")]
-        // GET: KatalogBukus/Create
+
+        ///<summary>
+        ///Function untuk membuat katalog buku
+        ///</summary>
         public IActionResult Create()
         {
             return View();
@@ -65,7 +90,10 @@ namespace Perpustakaan.Controllers
             return View(katalogBuku);
         }
         [Authorize(Policy = "editpolicy")]
-        // GET: KatalogBukus/Edit/5
+
+        ///<summary>
+        /// Function untuk mengubah data katalog buku
+        /// </summary>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,9 +109,14 @@ namespace Perpustakaan.Controllers
             return View(katalogBuku);
         }
 
-        // POST: KatalogBukus/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Function untuk mengubah nomor katalog
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="katalogBuku"></param>
+        /// <returns>
+        /// perubahan nomor katalog yang diingankan oleh user
+        /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("NoKatalog,JenisKatalog")] KatalogBuku katalogBuku)
@@ -116,7 +149,10 @@ namespace Perpustakaan.Controllers
             return View(katalogBuku);
         }
         [Authorize(Policy = "deletepolicy")]
-        // GET: KatalogBukus/Delete/5
+
+        ///<summary>
+        ///Function untuk menghapus katalog buku
+        ///</summary>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,7 +170,13 @@ namespace Perpustakaan.Controllers
             return View(katalogBuku);
         }
 
-        // POST: KatalogBukus/Delete/5
+        /// <summary>
+        /// Funvtion untuk menghapus nomor katalog buku
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>
+        /// penghapusan nomor katalog buku
+        /// </returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
