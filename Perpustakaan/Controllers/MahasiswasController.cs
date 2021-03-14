@@ -29,7 +29,7 @@ namespace Perpustakaan.Controllers
             _context = context;
         }
         /// <summary>
-        /// Funtion Get Mahasiswa
+        /// Function untuk GET Mahasiswa
         /// </summary>
         /// <param name="ktsd">parameter ketersediaan</param>
         /// <param name="searchString">parameter pencarian</param>
@@ -70,7 +70,7 @@ namespace Perpustakaan.Controllers
 
         // GET: Mahasiswas/Details/5
         /// <summary>
-        /// Function untuk Get detail Mahasiswa
+        /// Function untuk GET detail Mahasiswa
         /// </summary>
         /// <param name="id">parameter ID</param>
         /// <returns>
@@ -94,7 +94,7 @@ namespace Perpustakaan.Controllers
             return View(mahasiswa);
         }
         /// <summary>
-        /// Funtion untuk membuat  Mahasiswa
+        /// Function untuk GET membuat Mahasiswa
         /// </summary>
         /// <returns></returns>
         [Authorize(Policy = "writepolicy")]
@@ -108,6 +108,11 @@ namespace Perpustakaan.Controllers
         // POST: Mahasiswas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Function untuk POST membuat Mahasiswa
+        /// </summary>
+        /// <param name="mahasiswa"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NoAnggota,Nim,Nama,NoGender,NoHp,Alamat")] Mahasiswa mahasiswa)
@@ -122,9 +127,9 @@ namespace Perpustakaan.Controllers
             return View(mahasiswa);
         }
         /// <summary>
-        /// Functtion untuk mengubah data Mahasiswa
+        /// Function untuk GET mahasiswa yang akan di edit
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">parameter id</param>
         /// <returns></returns>
         [Authorize(Policy = "editpolicy")]
         // GET: Mahasiswas/Edit/5
@@ -148,7 +153,7 @@ namespace Perpustakaan.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         /// <summary>
-        /// Function untuk mengubah data Mahasiswa
+        /// Function untuk POST Mahasiswa yang akan diedit
         /// </summary>
         /// <param name="id">parameter id</param>
         /// <param name="mahasiswa">parameter mahasiswa</param>
@@ -188,7 +193,7 @@ namespace Perpustakaan.Controllers
             return View(mahasiswa);
         }
         /// <summary>
-        /// Function untuk menghapus Mahasiswa
+        /// Function untuk GET Mahasiswa yang akan dihapus
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -214,7 +219,7 @@ namespace Perpustakaan.Controllers
 
         // POST: Mahasiswas/Delete/5
         /// <summary>
-        /// Funtction untuk menghapus mahasiswa
+        /// Function untuk POST Mahasiswa yang akan dihapus
         /// </summary>
         /// <param name="id"></param>
         /// <returns>

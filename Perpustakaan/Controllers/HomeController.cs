@@ -16,6 +16,9 @@ namespace Perpustakaan.Controllers
 
 
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class HomeController : Controller
     {
         public IActionResult Index()

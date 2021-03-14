@@ -30,7 +30,7 @@ namespace Perpustakaan.Controllers
             _context = context;
         }
         /// <summary>
-        /// Function untuk get data kondisi buku
+        /// Function untuk GET data kondisi buku
         /// </summary>
         /// <returns></returns>
         [Authorize(Policy = "readonlypolicy")]
@@ -44,7 +44,7 @@ namespace Perpustakaan.Controllers
         /// <summary>
         /// FUnction untuk GET detail kondisi buku
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">parameter Id</param>
         /// <returns>
         /// data detail kondisi buku
         /// </returns>
@@ -65,7 +65,7 @@ namespace Perpustakaan.Controllers
             return View(kondisiBuku);
         }
         /// <summary>
-        /// Function untuk membuat kondisi buku
+        /// Function untuk GET kondisi buku yang akan dibuat
         /// </summary>
         /// <returns></returns>
         [Authorize(Policy = "writepolicy")]
@@ -79,7 +79,7 @@ namespace Perpustakaan.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         /// <summary>
-        /// Function untuk membuat Kondisi Buku
+        /// Function untuk POST Kondisi buku yang akan dibuat
         /// </summary>
         /// <param name="kondisiBuku">parameter Kondisi Buku</param>
         /// <returns></returns>
@@ -96,7 +96,7 @@ namespace Perpustakaan.Controllers
             return View(kondisiBuku);
         }
         /// <summary>
-        /// Function untuk merubah kondisi buku
+        /// Function untuk GET kondisi buku yang akan diubha
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -121,7 +121,7 @@ namespace Perpustakaan.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         /// <summary>
-        /// Function untuk mengubah Kondisi buku
+        /// Function untuk POST Kondisi buku yang akan diubah
         /// </summary>
         /// <param name="id">Parameter ID</param>
         /// <param name="kondisiBuku">Parameter Kondisi Buku</param>
@@ -158,7 +158,7 @@ namespace Perpustakaan.Controllers
             return View(kondisiBuku);
         }
         /// <summary>
-        /// Function untuk menghapus katalog buku
+        /// Function untuk GET Kondisi buku yang akan dihapus
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -183,9 +183,9 @@ namespace Perpustakaan.Controllers
 
         // POST: KondisiBukus/Delete/5
         /// <summary>
-        /// Function untuk menghapus nomor kondisi buku
+        /// Function untuk POST Kondisi buku yang akan dihapus
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">parameter id</param>
         /// <returns>
         /// Menghapus kondisi buku
         /// </returns>
