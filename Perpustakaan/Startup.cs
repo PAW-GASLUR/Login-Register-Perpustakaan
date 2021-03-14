@@ -16,13 +16,26 @@ using Perpustakaan.Models;
 
 namespace Perpustakaan
 {
+    /// <summary>
+    /// Main Class
+    /// </summary>
+    /// <remarks>
+    /// Class program
+    /// </remarks>
     public class Startup
     {
+        /// <summary>
+        /// Class startup
+        /// </summary>
+        /// <param name="configuration">Parameter configuration</param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// Function Configuration
+        /// </summary>
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -56,6 +69,11 @@ namespace Perpustakaan
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// Function Configure App dan Env
+        /// </summary>
+        /// <param name="app">Parameter app</param>
+        /// <param name="env">Parameter env</param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
