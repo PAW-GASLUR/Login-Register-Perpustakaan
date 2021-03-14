@@ -9,25 +9,25 @@ using Microsoft.EntityFrameworkCore;
 using Perpustakaan.Models;
 
 namespace Perpustakaan.Controllers
-{/// <summary>
-/// Main Class
-/// </summary>
-/// <remarks>
-/// Class ini dapat melakukan CRUD pada Kondisi Buku
-/// </remarks>
+{
+    /// <summary>
+    /// Main Class
+    /// </summary>
+    /// <remarks>
+    /// Class ini dapat melakukan CRUD pada kondisi buku
+    /// </remarks>
     public class KondisiBukusController : Controller
     {
         
-        /// <summary>
-        /// menentukan data perpustakaan yang dapat dibaca
-        /// </summary>
+        
         private readonly PERPUSTAKAAN_PAWContext _context;
 
+       
        
         /// <summary>
         /// Class controller kondisi buku
         /// </summary>
-        /// <param name="context">parameter context</param>
+        /// <param name="context"></param>
         public KondisiBukusController(PERPUSTAKAAN_PAWContext context)
         {
             _context = context;
