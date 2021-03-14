@@ -10,14 +10,30 @@ using Perpustakaan.Models;
 
 namespace Perpustakaan.Controllers
 {
+    /// <summary>
+    /// Main Class
+    /// </summary>
+    /// <remarks>
+    /// Class ini dapat melakukan CRUD pada Mahasiswa
+    /// </remarks>
     public class MahasiswasController : Controller
     {
         private readonly PERPUSTAKAAN_PAWContext _context;
 
+        /// <summary>
+        /// Class Controller Mahasiswa
+        /// </summary>
+        /// <param name="context"></param>
         public MahasiswasController(PERPUSTAKAAN_PAWContext context)
         {
             _context = context;
         }
+        /// <summary>
+        /// Funtion Get Mahasiswa
+        /// </summary>
+        /// <param name="ktsd">parameter ketersediaan</param>
+        /// <param name="searchString">parameter pencarian</param>
+        /// <returns></returns>
         [Authorize(Policy = "readonlypolicy")]
         // GET: Mahasiswas
         public async Task<IActionResult> Index(string ktsd, string searchString)
@@ -53,6 +69,13 @@ namespace Perpustakaan.Controllers
         }
 
         // GET: Mahasiswas/Details/5
+        /// <summary>
+        /// Function untuk Get detail Mahasiswa
+        /// </summary>
+        /// <param name="id">parameter ID</param>
+        /// <returns>
+        /// data detail mahasiswa
+        /// </returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -70,6 +93,10 @@ namespace Perpustakaan.Controllers
 
             return View(mahasiswa);
         }
+        /// <summary>
+        /// Funtion untuk membuat  Mahasiswa
+        /// </summary>
+        /// <returns></returns>
         [Authorize(Policy = "writepolicy")]
         // GET: Mahasiswas/Create
         public IActionResult Create()
@@ -94,6 +121,11 @@ namespace Perpustakaan.Controllers
             ViewData["NoGender"] = new SelectList(_context.Gender, "NoGender", "NamaGender", mahasiswa.NoGender);
             return View(mahasiswa);
         }
+        /// <summary>
+        /// Functtion untuk mengubah data Mahasiswa
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize(Policy = "editpolicy")]
         // GET: Mahasiswas/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -115,6 +147,14 @@ namespace Perpustakaan.Controllers
         // POST: Mahasiswas/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Function untuk mengubah data Mahasiswa
+        /// </summary>
+        /// <param name="id">parameter id</param>
+        /// <param name="mahasiswa">parameter mahasiswa</param>
+        /// <returns>
+        /// perubahan data mahasiswa
+        /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("NoAnggota,Nim,Nama,NoGender,NoHp,Alamat")] Mahasiswa mahasiswa)
@@ -147,6 +187,11 @@ namespace Perpustakaan.Controllers
             ViewData["NoGender"] = new SelectList(_context.Gender, "NoGender", "NamaGender", mahasiswa.NoGender);
             return View(mahasiswa);
         }
+        /// <summary>
+        /// Function untuk menghapus Mahasiswa
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize(Policy = "deletepolicy")]
         // GET: Mahasiswas/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -168,6 +213,13 @@ namespace Perpustakaan.Controllers
         }
 
         // POST: Mahasiswas/Delete/5
+        /// <summary>
+        /// Funtction untuk menghapus mahasiswa
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>
+        /// penghapusan data Mahasiswa
+        /// </returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

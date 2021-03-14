@@ -9,15 +9,30 @@ using Microsoft.EntityFrameworkCore;
 using Perpustakaan.Models;
 
 namespace Perpustakaan.Controllers
-{
+{/// <summary>
+/// Main Class
+/// </summary>
+/// <remarks>
+/// Class ini dapat melakukan CRUD pada Kondisi Buku
+/// </remarks>
     public class KondisiBukusController : Controller
-    {
+    {/// <summary>
+    /// Class Controller Kondisi Buku
+    /// </summary>
         private readonly PERPUSTAKAAN_PAWContext _context;
 
+        /// <summary>
+        /// Menentukan data perpustakaan dapat dibaca
+        /// </summary>
+        /// <param name="context"></param>
         public KondisiBukusController(PERPUSTAKAAN_PAWContext context)
         {
             _context = context;
         }
+        /// <summary>
+        /// Function untuk get data kondisi buku
+        /// </summary>
+        /// <returns></returns>
         [Authorize(Policy = "readonlypolicy")]
         // GET: KondisiBukus
         public async Task<IActionResult> Index()
@@ -26,6 +41,13 @@ namespace Perpustakaan.Controllers
         }
 
         // GET: KondisiBukus/Details/5
+        /// <summary>
+        /// FUnction untuk GET detail kondisi buku
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>
+        /// data detail kondisi buku
+        /// </returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -42,6 +64,10 @@ namespace Perpustakaan.Controllers
 
             return View(kondisiBuku);
         }
+        /// <summary>
+        /// Function untuk membuat kondisi buku
+        /// </summary>
+        /// <returns></returns>
         [Authorize(Policy = "writepolicy")]
         // GET: KondisiBukus/Create
         public IActionResult Create()
@@ -52,6 +78,11 @@ namespace Perpustakaan.Controllers
         // POST: KondisiBukus/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Function untuk membuat Kondisi Buku
+        /// </summary>
+        /// <param name="kondisiBuku">parameter Kondisi Buku</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NoKondisi,NamaKondisi")] KondisiBuku kondisiBuku)
@@ -64,6 +95,11 @@ namespace Perpustakaan.Controllers
             }
             return View(kondisiBuku);
         }
+        /// <summary>
+        /// Function untuk merubah kondisi buku
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize(Policy = "editpolicy")]
         // GET: KondisiBukus/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -84,6 +120,12 @@ namespace Perpustakaan.Controllers
         // POST: KondisiBukus/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Function untuk mengubah Kondisi buku
+        /// </summary>
+        /// <param name="id">Parameter ID</param>
+        /// <param name="kondisiBuku">Parameter Kondisi Buku</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("NoKondisi,NamaKondisi")] KondisiBuku kondisiBuku)
@@ -115,6 +157,11 @@ namespace Perpustakaan.Controllers
             }
             return View(kondisiBuku);
         }
+        /// <summary>
+        /// Function untuk menghapus katalog buku
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize(Policy = "deletepolicy")]
         // GET: KondisiBukus/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -135,6 +182,13 @@ namespace Perpustakaan.Controllers
         }
 
         // POST: KondisiBukus/Delete/5
+        /// <summary>
+        /// Function untuk menghapus nomor kondisi buku
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>
+        /// Menghapus kondisi buku
+        /// </returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
