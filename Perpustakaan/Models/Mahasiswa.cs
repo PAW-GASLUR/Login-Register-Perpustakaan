@@ -11,8 +11,9 @@ namespace Perpustakaan.Models
 /// </remarks>
     public partial class Mahasiswa
     {
+        
         /// <summary>
-        /// Class Mahasiswa
+        /// Class mahasiswa
         /// </summary>
         public Mahasiswa()
         {
@@ -21,7 +22,7 @@ namespace Perpustakaan.Models
 
 
         /// <summary>
-        /// untuk verifikasi data no anggota
+        /// untuk verifikasi data no anggota mahasiswa
         /// </summary>
         public int NoAnggota { get; set; }
         /// <summary>
@@ -30,22 +31,22 @@ namespace Perpustakaan.Models
         [Required(ErrorMessage = "NIM tidak boleh kosong!!")]
         public string Nim { get; set; }
         /// <summary>
-        /// Untuk verifikasi nama
+        /// Untuk verifikasi nama mahasiswa
         /// </summary>
         [Required(ErrorMessage = "Nama tidak boleh kosong!!")]
         public string Nama { get; set; }
         /// <summary>
-        /// Untuk verifikasi no gender
+        /// Untuk verifikasi no gender mahasiswa
         /// </summary>
         [Required(ErrorMessage = "No Gender tidak boleh kosong!!")]
         public int? NoGender { get; set; }
         /// <summary>
-        /// Untuk verifikasi no HP
+        /// Untuk verifikasi no HP mahasiswa
         /// </summary>
         [Required(ErrorMessage = "No Hp tidak boleh kosong!!")]
         public string NoHp { get; set; }
         /// <summary>
-        /// Untuk verifikasi Alamat
+        /// Untuk verifikasi Alamat mahasiswa
         /// </summary>
         [Required(ErrorMessage = "Alamat tidak boleh kosong!!")]
         public string Alamat { get; set; }

@@ -16,15 +16,18 @@ namespace Perpustakaan.Controllers
 /// Class ini dapat melakukan CRUD pada Kondisi Buku
 /// </remarks>
     public class KondisiBukusController : Controller
-    {/// <summary>
-    /// Class Controller Kondisi Buku
-    /// </summary>
+    {
+        
+        /// <summary>
+        /// menentukan data perpustakaan yang dapat dibaca
+        /// </summary>
         private readonly PERPUSTAKAAN_PAWContext _context;
 
+       
         /// <summary>
-        /// Menentukan data perpustakaan dapat dibaca
+        /// Class controller kondisi buku
         /// </summary>
-        /// <param name="context"></param>
+        /// <param name="context">parameter context</param>
         public KondisiBukusController(PERPUSTAKAAN_PAWContext context)
         {
             _context = context;
@@ -199,6 +202,11 @@ namespace Perpustakaan.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Function kondisi buku exists
+        /// </summary>
+        /// <param name="id">parameter Id</param>
+        /// <returns>konidisi buku exists</returns>
         private bool KondisiBukuExists(int id)
         {
             return _context.KondisiBuku.Any(e => e.NoKondisi == id);
