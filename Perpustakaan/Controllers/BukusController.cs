@@ -34,7 +34,7 @@ namespace Perpustakaan.Controllers
         [Authorize(Policy="readonlypolicy")]
         
         /// <summary>
-        /// Function ntuk GET data buku
+        /// Function untuk GET data buku
         /// </summary>
         /// <param name="ktsd">Parameter ketersediaan</param>
         /// <param name="searchString">Parameter pencarian</param>

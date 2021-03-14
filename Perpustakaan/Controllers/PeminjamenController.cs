@@ -10,16 +10,32 @@ using Perpustakaan.Models;
 
 namespace Perpustakaan.Controllers
 {
+    /// <summary>
+    /// Main Class
+    /// </summary>
+    /// <remask>
+    /// Class ini dapat melakukan CRUD pada Peminjaman
+    /// </remask>
     public class PeminjamenController : Controller
     {
         private readonly PERPUSTAKAAN_PAWContext _context;
 
+        /// <summary>
+        /// Class Controller Peminjaman
+        /// </summary>
+        /// <param name="context"></param>
         public PeminjamenController(PERPUSTAKAAN_PAWContext context)
         {
             _context = context;
         }
 
         // GET: Peminjamen
+        /// <summary>
+        /// Function untuk GET data Peminjaman
+        /// </summary>
+        /// <param name="ktsd">Parameter ketersediaan</param>
+        /// <param name="searchString">Parameter pencarian</param>
+        /// <returns></returns>
         [Authorize(Policy="readonlypolicy")]
         public async Task<IActionResult> Index(string ktsd, string searchString)
         {
@@ -54,6 +70,11 @@ namespace Perpustakaan.Controllers
         }
 
         // GET: Peminjamen/Details/5
+        /// <summary>
+        /// Function GET detail peminjaman
+        /// </summary>
+        /// <param name="id">Paramter Id</param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -73,6 +94,10 @@ namespace Perpustakaan.Controllers
             return View(peminjaman);
         }
 
+        /// <summary>
+        /// Function untuk GET peminjaman yang akan dibuat
+        /// </summary>
+        /// <returns></returns>
         [Authorize(Policy = "writepolicy")]
         // GET: Peminjamen/Create
         public IActionResult Create()
@@ -85,6 +110,11 @@ namespace Perpustakaan.Controllers
         // POST: Peminjamen/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Funtion untuk POST peminjaman yang akan dibuat
+        /// </summary>
+        /// <param name="peminjaman"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NoPeminjaman,TglPeminjaman,NoBuku,NoAnggota")] Peminjaman peminjaman)
@@ -100,6 +130,11 @@ namespace Perpustakaan.Controllers
             return View(peminjaman);
         }
 
+        /// <summary>
+        /// Function untuk GET peminjaman yang akan diedit
+        /// </summary>
+        /// <param name="id">Parameter ID</param>
+        /// <returns></returns>
         [Authorize(Policy = "editpolicy")]
         // GET: Peminjamen/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -122,6 +157,12 @@ namespace Perpustakaan.Controllers
         // POST: Peminjamen/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Function untuk POST peminjaman yang akan diedit
+        /// </summary>
+        /// <param name="id">Parameter Id</param>
+        /// <param name="peminjaman">Parameter Peminjaman</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("NoPeminjaman,TglPeminjaman,NoBuku,NoAnggota")] Peminjaman peminjaman)
@@ -156,6 +197,11 @@ namespace Perpustakaan.Controllers
             return View(peminjaman);
         }
 
+        /// <summary>
+        /// Function untuk GET peminjamnan yang akan dihapus
+        /// </summary>
+        /// <param name="id">Parameter id</param>
+        /// <returns></returns>
         [Authorize(Policy = "deletepolicy")]
         // GET: Peminjamen/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -178,6 +224,11 @@ namespace Perpustakaan.Controllers
         }
 
         // POST: Peminjamen/Delete/5
+        /// <summary>
+        /// Function untuk POST peminjaman yang akan dihapus
+        /// </summary>
+        /// <param name="id">Parameter id</param>
+        /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

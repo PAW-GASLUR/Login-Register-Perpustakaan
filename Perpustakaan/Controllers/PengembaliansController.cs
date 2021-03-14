@@ -10,14 +10,30 @@ using Perpustakaan.Models;
 
 namespace Perpustakaan.Controllers
 {
+    /// <summary>
+    /// Main Class
+    /// </summary>
+    /// <remarks>
+    /// Class ini dapat melakukan CRUD pada Pengembalian
+    /// </remarks>
     public class PengembaliansController : Controller
     {
         private readonly PERPUSTAKAAN_PAWContext _context;
 
+        /// <summary>
+        /// Class Controller Pengembalian
+        /// </summary>
+        /// <param name="context"></param>
         public PengembaliansController(PERPUSTAKAAN_PAWContext context)
         {
             _context = context;
         }
+        /// <summary>
+        /// Function untuk GET data Pengembalian
+        /// </summary>
+        /// <param name="ktsd"></param>
+        /// <param name="searchString"></param>
+        /// <returns></returns>
         [Authorize(Policy = "readonlypolicy")]
 
         // GET: Pengembalians
@@ -54,6 +70,11 @@ namespace Perpustakaan.Controllers
         }
 
         // GET: Pengembalians/Details/5
+        /// <summary>
+        /// Function untuk GET detail pengembalian
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -72,6 +93,10 @@ namespace Perpustakaan.Controllers
 
             return View(pengembalian);
         }
+        /// <summary>
+        /// Function untuk GET Pengembalian yang akan dibuat
+        /// </summary>
+        /// <returns></returns>
         [Authorize(Policy = "writepolicy")]
         // GET: Pengembalians/Create
         public IActionResult Create()
@@ -84,6 +109,11 @@ namespace Perpustakaan.Controllers
         // POST: Pengembalians/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Function untuk POST pengembalian yang akan dibuat
+        /// </summary>
+        /// <param name="pengembalian">Parameter pengembalian</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NoPengembalian,TglPengembalian,NoKondisi,Denda,NoPeminjaman")] Pengembalian pengembalian)
@@ -98,6 +128,11 @@ namespace Perpustakaan.Controllers
             ViewData["NoPeminjaman"] = new SelectList(_context.Peminjaman, "NoPeminjaman", "NoPeminjaman", pengembalian.NoPeminjaman);
             return View(pengembalian);
         }
+        /// <summary>
+        /// Function untuk GET peminjaman yang akan diedit
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize(Policy = "editpolicy")]
         // GET: Pengembalians/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -120,6 +155,12 @@ namespace Perpustakaan.Controllers
         // POST: Pengembalians/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Function untuk POST pengembalian yang akan diedit
+        /// </summary>
+        /// <param name="id">Parameter Id</param>
+        /// <param name="pengembalian">Parameter Pengembalian</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("NoPengembalian,TglPengembalian,NoKondisi,Denda,NoPeminjaman")] Pengembalian pengembalian)
@@ -153,6 +194,11 @@ namespace Perpustakaan.Controllers
             ViewData["NoPeminjaman"] = new SelectList(_context.Peminjaman, "NoPeminjaman", "NoPeminjaman", pengembalian.NoPeminjaman);
             return View(pengembalian);
         }
+        /// <summary>
+        /// Function untuk GET pengembalian yang akan dihapus
+        /// </summary>
+        /// <param name="id">Parameter Id</param>
+        /// <returns></returns>
         [Authorize(Policy = "deletepolicy")]
         // GET: Pengembalians/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -175,6 +221,11 @@ namespace Perpustakaan.Controllers
         }
 
         // POST: Pengembalians/Delete/5
+        /// <summary>
+        /// Function untuk POST pengembalian yang akan dihapus
+        /// </summary>
+        /// <param name="id">Parameter Id</param>
+        /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

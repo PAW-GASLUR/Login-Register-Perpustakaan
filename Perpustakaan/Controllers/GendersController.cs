@@ -10,14 +10,28 @@ using Perpustakaan.Models;
 
 namespace Perpustakaan.Controllers
 {
+    /// <summary>
+    /// Main Class
+    /// </summary>
+    /// <remarks>
+    /// Class ini dapat melakukan CRUD pada gender
+    /// </remarks>
     public class GendersController : Controller
     {
         private readonly PERPUSTAKAAN_PAWContext _context;
 
+        /// <summary>
+        /// Class controller gender
+        /// </summary>
+        /// <param name="context"></param>
         public GendersController(PERPUSTAKAAN_PAWContext context)
         {
             _context = context;
         }
+        /// <summary>
+        /// Function untuk GET data gender
+        /// </summary>
+        /// <returns></returns>
         [Authorize(Policy = "readonlypolicy")]
         // GET: Genders
         public async Task<IActionResult> Index()
@@ -26,6 +40,11 @@ namespace Perpustakaan.Controllers
         }
 
         // GET: Genders/Details/5
+        /// <summary>
+        /// Function untuk GET detail gender
+        /// </summary>
+        /// <param name="id">Parameter Id</param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -42,6 +61,10 @@ namespace Perpustakaan.Controllers
 
             return View(gender);
         }
+        /// <summary>
+        /// Function untuk GET gender yang akan dibuat
+        /// </summary>
+        /// <returns></returns>
         [Authorize(Policy = "writepolicy")]
         // GET: Genders/Create
         public IActionResult Create()
@@ -52,6 +75,11 @@ namespace Perpustakaan.Controllers
         // POST: Genders/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Function untuk POST gender yang akan dibuat
+        /// </summary>
+        /// <param name="gender">Parameter Gender</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NoGender,NamaGender")] Gender gender)
@@ -64,6 +92,11 @@ namespace Perpustakaan.Controllers
             }
             return View(gender);
         }
+        /// <summary>
+        /// Function untuk GET gender yang akan diedit
+        /// </summary>
+        /// <param name="id">Parameter Id</param>
+        /// <returns></returns>
         [Authorize(Policy = "editpolicy")]
         // GET: Genders/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -84,6 +117,12 @@ namespace Perpustakaan.Controllers
         // POST: Genders/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Function untuk POST gender yang akan diedit
+        /// </summary>
+        /// <param name="id">Parameter id</param>
+        /// <param name="gender">Parameter Gender</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("NoGender,NamaGender")] Gender gender)
@@ -115,6 +154,11 @@ namespace Perpustakaan.Controllers
             }
             return View(gender);
         }
+        /// <summary>
+        /// Function untuk GET gender yang akan dihapus
+        /// </summary>
+        /// <param name="id">Parameter Id</param>
+        /// <returns></returns>
         [Authorize(Policy = "deletepolicy")]
         // GET: Genders/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -135,6 +179,11 @@ namespace Perpustakaan.Controllers
         }
 
         // POST: Genders/Delete/5
+        /// <summary>
+        ///Function POST gender yang akan dihapus
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
