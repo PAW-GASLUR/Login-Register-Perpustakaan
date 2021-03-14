@@ -31,7 +31,7 @@ namespace Perpustakaan.Controllers
         /// <summary>
         /// Function untuk GET data gender
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Data Index</returns>
         [Authorize(Policy = "readonlypolicy")]
         // GET: Genders
         public async Task<IActionResult> Index()
@@ -44,7 +44,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk GET detail gender
         /// </summary>
         /// <param name="id">Parameter Id</param>
-        /// <returns></returns>
+        /// <returns>Data Details gender</returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -64,7 +64,7 @@ namespace Perpustakaan.Controllers
         /// <summary>
         /// Function untuk GET gender yang akan dibuat
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Data create gender</returns>
         [Authorize(Policy = "writepolicy")]
         // GET: Genders/Create
         public IActionResult Create()
@@ -79,7 +79,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk POST gender yang akan dibuat
         /// </summary>
         /// <param name="gender">Parameter Gender</param>
-        /// <returns></returns>
+        /// <returns>Data Gender</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NoGender,NamaGender")] Gender gender)
@@ -96,7 +96,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk GET gender yang akan diedit
         /// </summary>
         /// <param name="id">Parameter Id</param>
-        /// <returns></returns>
+        /// <returns>Perubahan nomor gender dan nama gender</returns>
         [Authorize(Policy = "editpolicy")]
         // GET: Genders/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -122,7 +122,7 @@ namespace Perpustakaan.Controllers
         /// </summary>
         /// <param name="id">Parameter id</param>
         /// <param name="gender">Parameter Gender</param>
-        /// <returns></returns>
+        /// <returns>Perubahan data nomor gender dan nama gender</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("NoGender,NamaGender")] Gender gender)
@@ -158,7 +158,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk GET gender yang akan dihapus
         /// </summary>
         /// <param name="id">Parameter Id</param>
-        /// <returns></returns>
+        /// <returns>Penghapusan gender</returns>
         [Authorize(Policy = "deletepolicy")]
         // GET: Genders/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -183,7 +183,7 @@ namespace Perpustakaan.Controllers
         ///Function POST gender yang akan dihapus
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>penghapusan gender</returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

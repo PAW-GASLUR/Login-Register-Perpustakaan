@@ -31,7 +31,7 @@ namespace Perpustakaan.Controllers
         /// <summary>
         /// Function untuk GET data Rak
         /// </summary>
-        /// <returns></returns>
+        /// <returns>data index rak</returns>
         [Authorize(Policy = "readonlypolicy")]
         // GET: Raks
         public async Task<IActionResult> Index()
@@ -44,7 +44,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk GET detail rak
         /// </summary>
         /// <param name="id">Parameter Id</param>
-        /// <returns></returns>
+        /// <returns>data detail rak</returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -64,7 +64,7 @@ namespace Perpustakaan.Controllers
         /// <summary>
         /// Function untuk GET rak yang akan dibuat
         /// </summary>
-        /// <returns></returns>
+        /// <returns>data create rak</returns>
         [Authorize(Policy = "writepolicy")]
         // GET: Raks/Create
         public IActionResult Create()
@@ -79,7 +79,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk POST rak yang akan dibuat
         /// </summary>
         /// <param name="rak"></param>
-        /// <returns></returns>
+        /// <returns>data create rak</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NoRak,NamaRak")] Rak rak)
@@ -96,7 +96,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk GET Rak yang akan diedit
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>perubahan data rak</returns>
         [Authorize(Policy = "editpolicy")]
         // GET: Raks/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -122,7 +122,7 @@ namespace Perpustakaan.Controllers
         /// </summary>
         /// <param name="id">Parameter Id</param>
         /// <param name="rak">Parameter Rak</param>
-        /// <returns></returns>
+        /// <returns>perubahan data nomor rak dan nama rak</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("NoRak,NamaRak")] Rak rak)
@@ -158,7 +158,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk GET rak yang akan dihapus
         /// </summary>
         /// <param name="id">Parameter Id</param>
-        /// <returns></returns>
+        /// <returns>penghapusan data rak</returns>
         [Authorize(Policy = "deletepolicy")]
         // GET: Raks/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -183,7 +183,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk POST Rak yang akan dihapus
         /// </summary>
         /// <param name="id">Parameter Id</param>
-        /// <returns></returns>
+        /// <returns>penghapusan data rak</returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -33,7 +33,7 @@ namespace Perpustakaan.Controllers
         /// </summary>
         /// <param name="ktsd">parameter ketersediaan</param>
         /// <param name="searchString">parameter pencarian</param>
-        /// <returns></returns>
+        /// <returns>data index mahasiswa</returns>
         [Authorize(Policy = "readonlypolicy")]
         // GET: Mahasiswas
         public async Task<IActionResult> Index(string ktsd, string searchString)
@@ -96,7 +96,7 @@ namespace Perpustakaan.Controllers
         /// <summary>
         /// Function untuk GET membuat Mahasiswa
         /// </summary>
-        /// <returns></returns>
+        /// <returns>data create mahasiswa</returns>
         [Authorize(Policy = "writepolicy")]
         // GET: Mahasiswas/Create
         public IActionResult Create()
@@ -112,7 +112,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk POST membuat Mahasiswa
         /// </summary>
         /// <param name="mahasiswa"></param>
-        /// <returns></returns>
+        /// <returns>data create mahasiswa</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NoAnggota,Nim,Nama,NoGender,NoHp,Alamat")] Mahasiswa mahasiswa)
@@ -130,7 +130,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk GET mahasiswa yang akan di edit
         /// </summary>
         /// <param name="id">parameter id</param>
-        /// <returns></returns>
+        /// <returns>perubahan data mahasiswa</returns>
         [Authorize(Policy = "editpolicy")]
         // GET: Mahasiswas/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -196,7 +196,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk GET Mahasiswa yang akan dihapus
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>pernghapusan data mahasiswa</returns>
         [Authorize(Policy = "deletepolicy")]
         // GET: Mahasiswas/Delete/5
         public async Task<IActionResult> Delete(int? id)

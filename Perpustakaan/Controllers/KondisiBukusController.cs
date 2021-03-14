@@ -32,7 +32,7 @@ namespace Perpustakaan.Controllers
         /// <summary>
         /// Function untuk GET data kondisi buku
         /// </summary>
-        /// <returns></returns>
+        /// <returns>data index kondisi buku</returns>
         [Authorize(Policy = "readonlypolicy")]
         // GET: KondisiBukus
         public async Task<IActionResult> Index()
@@ -67,7 +67,7 @@ namespace Perpustakaan.Controllers
         /// <summary>
         /// Function untuk GET kondisi buku yang akan dibuat
         /// </summary>
-        /// <returns></returns>
+        /// <returns>data create kondisi buku</returns>
         [Authorize(Policy = "writepolicy")]
         // GET: KondisiBukus/Create
         public IActionResult Create()
@@ -82,7 +82,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk POST Kondisi buku yang akan dibuat
         /// </summary>
         /// <param name="kondisiBuku">parameter Kondisi Buku</param>
-        /// <returns></returns>
+        /// <returns>data create kondisi buku</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NoKondisi,NamaKondisi")] KondisiBuku kondisiBuku)
@@ -99,7 +99,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk GET kondisi buku yang akan diubha
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>data perubahan kondisi buku</returns>
         [Authorize(Policy = "editpolicy")]
         // GET: KondisiBukus/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -125,7 +125,7 @@ namespace Perpustakaan.Controllers
         /// </summary>
         /// <param name="id">Parameter ID</param>
         /// <param name="kondisiBuku">Parameter Kondisi Buku</param>
-        /// <returns></returns>
+        /// <returns>data perubahan nomor kondisi buku dan nama kondisi buku</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("NoKondisi,NamaKondisi")] KondisiBuku kondisiBuku)
@@ -161,7 +161,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk GET Kondisi buku yang akan dihapus
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>penghapusan data kondisi buku</returns>
         [Authorize(Policy = "deletepolicy")]
         // GET: KondisiBukus/Delete/5
         public async Task<IActionResult> Delete(int? id)

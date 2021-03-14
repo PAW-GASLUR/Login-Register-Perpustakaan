@@ -63,7 +63,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk GET detail buku
         /// </summary>
         /// <param name="id">Parameter id</param>
-        /// <returns></returns>
+        /// <returns>Data Details buku</returns>
         // GET: Bukus/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -100,7 +100,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk POST buku yang akan dibuat
         /// </summary>
         /// <param name="buku">Parameter buku</param>
-        /// <returns></returns>
+        /// <returns>Data create buku</returns>
         // POST: Bukus/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -146,7 +146,7 @@ namespace Perpustakaan.Controllers
         /// </summary>
         /// <param name="id">Parameter id</param>
         /// <param name="buku">Parameter buku</param>
-        /// <returns></returns>
+        /// <returns>perubahan data buku</returns>
         // POST: Bukus/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -211,7 +211,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk POST buku yang akan dihapus
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>penghapusan data buku</returns>
         // POST: Bukus/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

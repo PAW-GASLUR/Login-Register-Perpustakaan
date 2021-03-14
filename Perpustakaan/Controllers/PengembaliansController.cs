@@ -33,7 +33,7 @@ namespace Perpustakaan.Controllers
         /// </summary>
         /// <param name="ktsd"></param>
         /// <param name="searchString"></param>
-        /// <returns></returns>
+        /// <returns>data index</returns>
         [Authorize(Policy = "readonlypolicy")]
 
         // GET: Pengembalians
@@ -74,7 +74,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk GET detail pengembalian
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>data detail pengembalian</returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -96,7 +96,7 @@ namespace Perpustakaan.Controllers
         /// <summary>
         /// Function untuk GET Pengembalian yang akan dibuat
         /// </summary>
-        /// <returns></returns>
+        /// <returns>data create pengembalian</returns>
         [Authorize(Policy = "writepolicy")]
         // GET: Pengembalians/Create
         public IActionResult Create()
@@ -113,7 +113,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk POST pengembalian yang akan dibuat
         /// </summary>
         /// <param name="pengembalian">Parameter pengembalian</param>
-        /// <returns></returns>
+        /// <returns>data create pengembalian</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NoPengembalian,TglPengembalian,NoKondisi,Denda,NoPeminjaman")] Pengembalian pengembalian)
@@ -132,7 +132,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk GET peminjaman yang akan diedit
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>perubahan data pengembalian</returns>
         [Authorize(Policy = "editpolicy")]
         // GET: Pengembalians/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -160,7 +160,7 @@ namespace Perpustakaan.Controllers
         /// </summary>
         /// <param name="id">Parameter Id</param>
         /// <param name="pengembalian">Parameter Pengembalian</param>
-        /// <returns></returns>
+        /// <returns>perubahan nomor pengembalian , tanggal pengembalian , nomor kondisi , dena dan nomor peminjaman</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("NoPengembalian,TglPengembalian,NoKondisi,Denda,NoPeminjaman")] Pengembalian pengembalian)
@@ -198,7 +198,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk GET pengembalian yang akan dihapus
         /// </summary>
         /// <param name="id">Parameter Id</param>
-        /// <returns></returns>
+        /// <returns>penghapusan data pengembalian</returns>
         [Authorize(Policy = "deletepolicy")]
         // GET: Pengembalians/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -225,7 +225,7 @@ namespace Perpustakaan.Controllers
         /// Function untuk POST pengembalian yang akan dihapus
         /// </summary>
         /// <param name="id">Parameter Id</param>
-        /// <returns></returns>
+        /// <returns>penghapusan data pengembalian</returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
